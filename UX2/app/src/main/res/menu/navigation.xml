@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_rutinas"
+        android:icon="@drawable/ic_fitness_center_black_24dp"
+        android:title="@string/title_rutinas" />
+
+    <item
+        android:id="@+id/navigation_inicio"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="@string/title_inicio" />
+
+    <item
+        android:id="@+id/navigation_alimentacion"
+        android:icon="@drawable/ic_free_breakfast_black_24dp"
+        android:title="@string/title_alimentacion" />
+
+</menu>

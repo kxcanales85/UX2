@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">UNIFIT v2</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_inicio">Inicio</string>
+    <string name="title_rutinas">Rutinas</string>
+    <string name="title_alimentacion">Alimentación</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
