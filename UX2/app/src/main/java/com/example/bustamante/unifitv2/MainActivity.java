@@ -1,6 +1,7 @@
 package com.example.bustamante.unifitv2;
 
 import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -21,6 +22,35 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    BottomNavigationView bottomNavigationView;
+
+    /*private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            switch (item.getItemId()) {
+
+                case R.id.navigation_rutinas:
+                    //mTextMessage.setText(R.string.title_rutinas);
+                    return true;
+                case R.id.navigation_inicio:
+                    MainFragment mf = new MainFragment();
+                    android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                    transaction.replace(R.id.container1,mf);
+                    transaction.addToBackStack(null);
+                    transaction.commit();
+                    //mTextMessage.setText(R.string.title_inicio);
+                    return true;
+                case R.id.navigation_alimentacion:
+                    //mTextMessage.setText(R.string.title_alimentacion);
+                    return true;
+            }
+            return false;
+        }
+
+    };*/
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,10 +58,21 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             HomeFragment fragmentDemo = (HomeFragment)
                     getSupportFragmentManager().findFragmentById(R.id.home_fragment);
-        }
+        }*/
+
+        HomeFragment hf = new HomeFragment();
+        getSupportFragmentManager().beginTransaction().add(R.id.container1,hf).commit();
+        /*int i = 1;
+        if(i==1){
+            MainFragment mf = new MainFragment();
+            android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.container1,mf);
+            transaction.addToBackStack(null);
+            transaction.commit();
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -42,6 +83,40 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        bottomNavigationView = (BottomNavigationView)findViewById(R.id.navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.navigation_inicio);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(
+                new BottomNavigationView.OnNavigationItemSelectedListener() {
+                    @Override
+                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.navigation_rutinas:
+                                MyRoutinesFragment mrf = new MyRoutinesFragment();
+                                android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                                transaction.replace(R.id.container1,mrf);
+                                transaction.addToBackStack(null);
+                                transaction.commit();
+                                return true;
+                            case R.id.navigation_inicio:
+                                HomeFragment hf = new HomeFragment();
+                                android.support.v4.app.FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+                                transaction2.replace(R.id.container1,hf);
+                                transaction2.addToBackStack(null);
+                                transaction2.commit();
+                                return true;
+                            case R.id.navigation_alimentacion:
+                                MainFragment mf3 = new MainFragment();
+                                android.support.v4.app.FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+                                transaction3.replace(R.id.container1,mf3);
+                                transaction3.addToBackStack(null);
+                                transaction3.commit();
+                                return true;
+                        }
+                        return false;
+                    }
+                });
     }
 
     @Override
@@ -76,28 +151,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_rutinas:
-                    android.support.v4.app.FragmentManager manager = getSupportFragmentManager();
-                    manager.beginTransaction().replace(R.id.home_fragment, new HomeFragment()).commit();
-                    //mTextMessage.setText(R.string.title_rutinas);
-                    return true;
-                case R.id.navigation_inicio:
-                    //mTextMessage.setText(R.string.title_inicio);
-                    return true;
-                case R.id.navigation_alimentacion:
-                    //mTextMessage.setText(R.string.title_alimentacion);
-                    return true;
-            }
-            return false;
-        }
-
-    };
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
