@@ -1,14 +1,15 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.bustamante.unifitv2.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical">
 
         <View
@@ -59,7 +60,32 @@
             android:padding="20dp"
             android:drawableLeft="@drawable/ic_add_box_black_24dp"
             android:text="@string/comida4"/>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <com.hadiidbouk.charts.ChartProgressBar
+            android:id="@+id/ChartProgressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            app:hdBarCanBeClick="true"
+            app:hdBarHeight="170dp"
+            app:hdBarWidth="16dp"
+            app:hdBarRadius="10dp"
+            app:hdMaxValue="10"
+            app:hdEmptyColor="@color/empty"
+            app:hdProgressColor="@color/progress"
+            app:hdProgressClickColor="@color/progress_click"
+            app:hdPinBackgroundColor="@color/pin_background"
+            app:hdPinTextColor="@color/pin_text"
+            app:hdPinPadding="3dp"
+            app:hdBarTitleColor="@color/bar_title_color"
+            app:hdBarTitleTxtSize="12sp"
+            app:hdPinTxtSize="17sp"
+            app:hdPinMarginTop="10dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
     </LinearLayout>
-
-</FrameLayout>
+</ScrollView>

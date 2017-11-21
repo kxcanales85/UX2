@@ -8,11 +8,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hadiidbouk.charts.BarData;
+import com.hadiidbouk.charts.ChartProgressBar;
+
+import java.util.ArrayList;
+
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MainFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link MainFragment#newInstance} factory method to
  * create an instance of this fragment.
@@ -62,8 +66,32 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main, container, false);
+        View v = inflater.inflate(R.layout.fragment_main, container, false);
+        ArrayList<BarData> dataList = new ArrayList<>();
+
+        BarData data = new BarData("Sep", 3.4f, "3.4€");
+        dataList.add(data);
+
+        data = new BarData("Oct", 8f, "8€");
+        dataList.add(data);
+
+        data = new BarData("Nov", 1.8f, "1.8€");
+        dataList.add(data);
+
+        data = new BarData("Dec", 7.3f, "7.3€");
+        dataList.add(data);
+
+        data = new BarData("Jan", 6.2f, "6.2€");
+        dataList.add(data);
+
+        data = new BarData("Feb", 3.3f, "3.3€");
+        dataList.add(data);
+
+        ChartProgressBar mChart = (ChartProgressBar) v.findViewById(R.id.ChartProgressBar);
+
+        mChart.setDataList(dataList);
+        mChart.build();
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
