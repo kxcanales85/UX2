@@ -32,7 +32,8 @@ public class AddAlimentActivity extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 Intent returnIntent = new Intent();
-                returnIntent.putExtra("result",alimento);
+                returnIntent.putExtra("result", (Serializable) alimento);
+                System.out.println("print desde addaliment "+alimento.getNombre());
                 setResult(Activity.RESULT_OK,returnIntent);
                 finish();
             }
@@ -55,6 +56,7 @@ public class AddAlimentActivity extends AppCompatActivity {
         // Handle presses on the action bar items
         switch (item.getItemId()) {
             case R.id.cancelar:
+                setResult(RESULT_CANCELED);
                 finish();
                 return true;
             default:

@@ -17,9 +17,5 @@
             android:id="@+id/listViewRoutines">
         </ExpandableListView>
 
-
-
-
-
     </ScrollView>
 </LinearLayout>

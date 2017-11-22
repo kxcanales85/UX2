@@ -49,6 +49,9 @@ public class MainFragment extends Fragment {
     HashMap<String, List<String>> comidas;
     List<String> comidasPrincipales;
 
+
+
+
     public MainFragment() {
         // Required empty public constructor
     }
@@ -76,7 +79,9 @@ public class MainFragment extends Fragment {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 alimento = (Alimento) data.getSerializableExtra("result");
-                System.out.println(alimento.getNombre());
+                //comida1.add(alimento.getNombre());
+                //listAdapter.notifyDataSetChanged();
+                //System.out.println(alimento.getNombre());
             }
             if (resultCode == Activity.RESULT_CANCELED) {
                 //Write your code if there's no result
@@ -113,22 +118,26 @@ public class MainFragment extends Fragment {
 
         ChartProgressBar mChart = (ChartProgressBar) v.findViewById(R.id.ChartProgressBar);
 
-        expListView = (ExpandableListView)v.findViewById(R.id.comidas_principales);
+        //expListView = (ExpandableListView)v.findViewById(R.id.comidas_principales);
 
-        setListView(expListView);
+        //setListView(expListView);
 
         mChart.setDataList(dataList);
         mChart.build();
-        //desayuno = (TextView) v.findViewById(R.id.desayuno);
-        /*desayuno.setOnClickListener(new View.OnClickListener() {
+        desayuno = (TextView) v.findViewById(R.id.desayuno);
+        desayuno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), AddAlimentActivity.class);
-                intent.putExtra("myString", "Desayuno");
-                startActivityForResult(intent, 1);
+                Intent intent = new Intent(getContext(), ListFoodActivity.class);
+                Resources res = getResources();
+                intent.putExtra("comida", res.getString(R.string.comida1));
+                startActivity(intent);
+                //Intent intent = new Intent(getContext(), AddAlimentActivity.class);
+                //intent.putExtra("myString", "Desayuno");
+                //startActivityForResult(intent, 1);
                 //startActivity(intent);
             }
-        });*/
+        });
 
         return v;
     }
@@ -144,13 +153,17 @@ public class MainFragment extends Fragment {
         comidasPrincipales.add(res.getString(R.string.otros));
 
         List<String> comida1 = new ArrayList<String>();
+        comida1.add("Leche");
+        comida1.add("Café");
 
         List<String> comida2 = new ArrayList<String>();
+        comida2.add("Leche");
 
         List<String> comida3 = new ArrayList<String>();
+        comida3.add("Leche");
 
         List<String> comida4 = new ArrayList<String>();
-
+        comida4.add("Leche");
 
 
         comidas.put(comidasPrincipales.get(0),comida1);
@@ -198,11 +211,11 @@ public class MainFragment extends Fragment {
             if (convertView == null) {
                 LayoutInflater infalInflater = (LayoutInflater) this._context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = infalInflater.inflate(R.layout.food_list_item, null);
+                convertView = infalInflater.inflate(R.layout.list_item, null);
             }
 
             TextView txtListChild = (TextView) convertView
-                    .findViewById(R.id.food);
+                    .findViewById(R.id.exercise);
 
             txtListChild.setText(childText);
             return convertView;
@@ -236,7 +249,7 @@ public class MainFragment extends Fragment {
             if (convertView == null) {
                 LayoutInflater infalInflater = (LayoutInflater) this._context
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                convertView = infalInflater.inflate(R.layout.food_list_header, null);
+                convertView = infalInflater.inflate(R.layout.list_header, null);
             }
 
             TextView lblListHeader = (TextView) convertView

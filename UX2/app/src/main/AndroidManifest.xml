@@ -21,9 +21,10 @@
         </activity>
         <activity android:name=".EditRoutineActivity" />
         <activity android:name=".AddExercisesActivity" />
-        <activity android:name=".AddExerciseActivity"></activity>
+        <activity android:name=".AddExerciseActivity" />
         <activity android:name=".AddAlimentActivity" />
-        <activity android:name=".FoodActivity"></activity>
+        <activity android:name=".FoodActivity" />
+        <activity android:name=".ListFoodActivity"></activity>
     </application>
 
 </manifest>

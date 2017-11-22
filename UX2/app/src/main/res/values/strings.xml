@@ -51,4 +51,5 @@
     <string name="almuerzo">Almuerzo</string>
     <string name="cena">Cena</string>
     <string name="otros">Otros</string>
+    <string name="finalizar">Finalizar</string>
 </resources>
