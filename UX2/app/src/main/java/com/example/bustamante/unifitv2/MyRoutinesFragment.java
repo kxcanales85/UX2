@@ -1,12 +1,16 @@
 package com.example.bustamante.unifitv2;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +52,7 @@ public class MyRoutinesFragment extends Fragment {
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
     HashMap<String, List<String>> ejercicios;
+    private static final int MENU_ITEM_ITEM1 = 0;
 
     public MyRoutinesFragment() {
         // Required empty public constructor
@@ -92,7 +97,35 @@ public class MyRoutinesFragment extends Fragment {
 
         getActivity().setTitle("Mis rutinas");
 
+        setHasOptionsMenu(true);
+
         return rootView;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //inflater.inflate(R.menu.main,menu);
+        super.onCreateOptionsMenu(menu,inflater);
+        item = menu.add(Menu.NONE, MENU_ITEM_ITEM1, Menu.NONE, "Agregar");
+        item.setIcon(android.R.drawable.ic_input_add);
+        item.setShowAsActionFlags(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_ITEM_ITEM1:
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setMessage("Agregar nueva rutina");
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                return true;
+
+            default:
+                return false;
+        }
     }
 
     public boolean setListView(ExpandableListView expandablelist){
