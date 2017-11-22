@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.bustamante.unifitv2.MyRoutinesFragment">
 
-<<<<<<< HEAD
+
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -15,15 +15,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/listViewRoutines">
-=======
-    <ExpandableListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/listViewRoutines">
-    </ExpandableListView>
->>>>>>> 3023f7cbdb23ddf656b0bcc2f2f1801960c28198
-
         </ExpandableListView>
+
+        
 
 
 

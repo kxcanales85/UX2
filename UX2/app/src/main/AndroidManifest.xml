@@ -19,14 +19,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
         <activity android:name=".EditRoutineActivity" />
         <activity android:name=".AddExercisesActivity" />
         <activity android:name=".AddExerciseActivity"></activity>
-=======
         <activity android:name=".AddAlimentActivity" />
         <activity android:name=".FoodActivity"></activity>
->>>>>>> 3023f7cbdb23ddf656b0bcc2f2f1801960c28198
     </application>
 
 </manifest>
