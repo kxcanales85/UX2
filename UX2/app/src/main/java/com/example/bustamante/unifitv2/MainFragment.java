@@ -41,7 +41,7 @@ public class MainFragment extends Fragment {
     // TODO: Rename and change types of parameters
     String mParam1;
     String mParam2;
-    TextView desayuno;
+    TextView desayuno, almuerzo, cena, otros;
     private Alimento alimento;
     ImageView dropdown_routine;
     ExpandableListAdapter listAdapter;
@@ -136,6 +136,39 @@ public class MainFragment extends Fragment {
                 //intent.putExtra("myString", "Desayuno");
                 //startActivityForResult(intent, 1);
                 //startActivity(intent);
+            }
+        });
+
+        almuerzo = (TextView) v.findViewById(R.id.almuerzo);
+        almuerzo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ListFoodActivity.class);
+                Resources res = getResources();
+                intent.putExtra("comida", res.getString(R.string.comida2));
+                startActivity(intent);
+            }
+        });
+
+        cena = (TextView) v.findViewById(R.id.cena);
+        cena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ListFoodActivity.class);
+                Resources res = getResources();
+                intent.putExtra("comida", res.getString(R.string.comida3));
+                startActivity(intent);
+            }
+        });
+
+        otros = (TextView) v.findViewById(R.id.otros);
+        otros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ListFoodActivity.class);
+                Resources res = getResources();
+                intent.putExtra("comida", res.getString(R.string.comida4));
+                startActivity(intent);
             }
         });
 
