@@ -1,12 +1,14 @@
 package com.example.bustamante.unifitv2;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.hadiidbouk.charts.BarData;
 import com.hadiidbouk.charts.ChartProgressBar;
@@ -30,7 +32,7 @@ public class MainFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private TextView desayuno;
 
     public MainFragment() {
         // Required empty public constructor
@@ -54,6 +56,8 @@ public class MainFragment extends Fragment {
         return fragment;
     }
 
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,28 +73,32 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_main, container, false);
         ArrayList<BarData> dataList = new ArrayList<>();
 
-        BarData data = new BarData("Sep", 3.4f, "3.4€");
+        BarData data = new BarData("Total", 2f, "2k");
         dataList.add(data);
 
-        data = new BarData("Oct", 8f, "8€");
+        data = new BarData("Carb", 1.8f, "1.8k");
         dataList.add(data);
 
-        data = new BarData("Nov", 1.8f, "1.8€");
+        data = new BarData("Prot", 1.3f, "1.3k");
         dataList.add(data);
 
-        data = new BarData("Dec", 7.3f, "7.3€");
+        data = new BarData("Grasas", 2.2f, "2.2k");
         dataList.add(data);
 
-        data = new BarData("Jan", 6.2f, "6.2€");
-        dataList.add(data);
-
-        data = new BarData("Feb", 3.3f, "3.3€");
-        dataList.add(data);
 
         ChartProgressBar mChart = (ChartProgressBar) v.findViewById(R.id.ChartProgressBar);
 
         mChart.setDataList(dataList);
         mChart.build();
+        desayuno = (TextView) v.findViewById(R.id.desayuno);
+        desayuno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AddAlimentActivity.class);
+                intent.putExtra("myString", "Desayuno");
+                startActivity(intent);
+            }
+        });
         return v;
     }
 

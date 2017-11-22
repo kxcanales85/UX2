@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.bustamante.unifitv2.AddAlimentActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/search_text"
+                android:layout_width="@dimen/largo_buscar"
+                android:layout_height="wrap_content"
+                android:hint="@string/instruccion"
+                android:paddingLeft="@dimen/text_margin"
+                android:paddingRight="@dimen/text_margin"/>
+
+            <Button
+                android:id="@+id/buscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="sendMessage"
+                android:text="@string/search"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+        <ListView
+            android:id="@+id/alimentos_recientes"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        </ListView>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

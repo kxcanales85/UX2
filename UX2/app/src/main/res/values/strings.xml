@@ -32,6 +32,13 @@
     <string name="comida2">\t\tAlmuerzo</string>
     <string name="comida3">\t\tCena</string>
     <string name="comida4">\t\tOtros</string>
+    <string name="resumen">Resumen del día</string>
+    <string name="calconsumidas">Calorías consumidas</string>
+    <string name="calrestantes">Calorías restantes</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cancel">Cancelar</string>
+    <string name="instruccion">Búsqueda por alimentos</string>
+    <string name="search">Buscar</string>
+    <string name="add">Añadir</string>
 </resources>
