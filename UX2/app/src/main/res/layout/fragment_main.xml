@@ -12,19 +12,69 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-
-
-        <ExpandableListView
-            android:layout_width="match_parent"
-            android:layout_height="260dp"
-            android:id="@+id/comidas_principales">
-
-        </ExpandableListView>
+        <TextView
+            android:id="@+id/desayuno"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:drawableLeft="@drawable/ic_add_box_black_24dp"
+            android:text="@string/comida1"/>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="3dp"
-            android:background="@android:color/darker_gray"/>
+            android:layout_height="5dp"/>
+
+        <TextView
+            android:id="@+id/almuerzo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:drawableLeft="@drawable/ic_add_box_black_24dp"
+            android:text="@string/comida2"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <TextView
+            android:id="@+id/cena"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:drawableLeft="@drawable/ic_add_box_black_24dp"
+            android:text="@string/comida3"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="5dp"/>
+
+        <TextView
+            android:id="@+id/otros"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="#fff"
+            android:clickable="true"
+            android:elevation="4dp"
+            android:padding="20dp"
+            android:drawableLeft="@drawable/ic_add_box_black_24dp"
+            android:text="@string/comida4"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
 
         <TextView
             android:layout_width="match_parent"
