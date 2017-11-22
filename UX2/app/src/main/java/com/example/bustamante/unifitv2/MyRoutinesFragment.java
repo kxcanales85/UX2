@@ -223,9 +223,9 @@ public class MyRoutinesFragment extends Fragment {
                 public void onClick(View v) {
                     switch(groupPosition){
                         case 0:
-                            /*intent = new Intent(getActivity(),MainActivity.class);
+                            intent = new Intent(getActivity(),EditRoutineActivity.class);
                             intent.putExtra("rutina",headerTitle);
-                            startActivity(intent);*/
+                            startActivity(intent);
                     }
                 }
             });
