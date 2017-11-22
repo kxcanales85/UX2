@@ -137,7 +137,7 @@ public class MyRoutinesFragment extends Fragment {
         return true;
     }
 
-    private class ExpandableListAdapter extends BaseExpandableListAdapter {
+    class ExpandableListAdapter extends BaseExpandableListAdapter {
 
         private Context _context;
         private List<String> _listDataHeader; // header titles

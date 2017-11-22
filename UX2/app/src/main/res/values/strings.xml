@@ -41,4 +41,14 @@
     <string name="instruccion">Búsqueda por alimentos</string>
     <string name="search">Buscar</string>
     <string name="add">Añadir</string>
+    <string name="porcion">Porción</string>
+    <string name="calorias">Calorías</string>
+    <string name="reportar">Reportar Error</string>
+    <string name="mensajesReportar">Indíquenos el error:</string>
+    <string name="send">Enviar</string>
+    <string name="comidas">Comidas</string>
+    <string name="desayuno">Desayuno</string>
+    <string name="almuerzo">Almuerzo</string>
+    <string name="cena">Cena</string>
+    <string name="otros">Otros</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.bustamante.unifitv2;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.bustamante.unifitv2.Models.Alimento;
+
+import java.io.Serializable;
+import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +24,23 @@ public class AddAlimentActivity extends AppCompatActivity {
     private Menu menu;
     private List<String> busquedasRecientes;
     private EditText search;
+    public final static int REQ_CODE_CHILD = 1;
+    private Alimento alimento;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                Intent returnIntent = new Intent();
+                returnIntent.putExtra("result",alimento);
+                setResult(Activity.RESULT_OK,returnIntent);
+                finish();
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }//onActivityResult
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -52,19 +74,16 @@ public class AddAlimentActivity extends AppCompatActivity {
         listView1.setAdapter(adapter);
         listView1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position,
-                                    long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String selectedFromList = (String) listView1.getItemAtPosition(position);
                 Intent intent = new Intent(AddAlimentActivity.this, FoodActivity.class);
-                intent.putExtra("Comida", elemento);
-                startActivity(intent);
-                //search.setText(selectedFromList);
+                alimento = new Alimento(1,"Leche", 300, 300, 300, "una taza", 400);
+                intent.putExtra("objetoAlimento", (Serializable) alimento);
+                startActivityForResult(intent, REQ_CODE_CHILD);
+                //startActivity(intent);
+                //finish();
             }
         });
-
-
-        //Intent intent = new Intent(AddAlimentActivity.this, FoodActivity.class);
-        //startActivity(intent);
     }
 
     @Override
@@ -74,7 +93,5 @@ public class AddAlimentActivity extends AppCompatActivity {
         String str = getIntent().getStringExtra("myString");
         setTitle(str);
         search = (EditText) findViewById(R.id.search_text);
-        String[] items = { "Leche", "Mantequilla", "Yogurt", "Café" };
-
     }
 }
