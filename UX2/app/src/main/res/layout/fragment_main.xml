@@ -1,13 +1,112 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.bustamante.unifitv2.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="fdsfsd" />
+        android:orientation="vertical">
 
-</FrameLayout>
+
+
+        <ExpandableListView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:id="@+id/comidas_principales">
+
+        </ExpandableListView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@android:color/darker_gray"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/resumen"
+            android:textAlignment="center"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calconsumidas"
+                    android:paddingLeft="@dimen/text_margin"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2300"
+                    android:paddingLeft="@dimen/tab"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/calrestantes"
+                    android:paddingLeft="@dimen/text_margin"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="       700"
+                    android:paddingLeft="@dimen/tab"/>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <com.hadiidbouk.charts.ChartProgressBar
+                android:id="@+id/ChartProgressBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                app:hdBarCanBeClick="true"
+                app:hdBarHeight="170dp"
+                app:hdBarWidth="16dp"
+                app:hdBarRadius="10dp"
+                app:hdMaxValue="5"
+                app:hdEmptyColor="@color/colorPrimary"
+                app:hdProgressColor="@color/colorAccent"
+                app:hdProgressClickColor="@color/progress_click"
+                app:hdPinBackgroundColor="@color/pin_background"
+                app:hdPinTextColor="@color/pin_text"
+                app:hdPinPadding="3dp"
+                app:hdBarTitleColor="@color/bar_title_color"
+                app:hdBarTitleTxtSize="12sp"
+                app:hdPinTxtSize="17sp"
+                app:hdPinMarginTop="10dp"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp"/>
+    </LinearLayout>
+</ScrollView>

@@ -28,6 +28,10 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     compile 'com.github.lecho:hellocharts-library:1.5.8@aar'
+<<<<<<< HEAD
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:26.1.0'
+=======
+    compile 'com.github.hadiidbouk:ChartProgressBar-Android:1.0.3'
+>>>>>>> 3023f7cbdb23ddf656b0bcc2f2f1801960c28198
 }
