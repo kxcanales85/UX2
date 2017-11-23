@@ -16,6 +16,10 @@ import android.widget.Spinner;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 public class AddExerciseActivity extends AppCompatActivity {
 
     Button rutina;
@@ -32,6 +36,7 @@ public class AddExerciseActivity extends AppCompatActivity {
     Button add_routine;
     AlertDialog.Builder builder;
     AlertDialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +57,13 @@ public class AddExerciseActivity extends AppCompatActivity {
     public boolean addRoutineBtn(){
         add_routine = (Button)findViewById(R.id.addRoutine);
         builder = new AlertDialog.Builder(this);
+        final Intent intent = new Intent(AddExerciseActivity.this,MainActivity.class);
+        intent.putExtra("señal",1);
         builder.setMessage("Rutina agregada exitosamente.").setTitle("Aviso");
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                startActivity(intent);
                 finish();
             }
         });

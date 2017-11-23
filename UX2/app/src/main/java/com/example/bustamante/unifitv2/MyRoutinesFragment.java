@@ -43,15 +43,22 @@ public class MyRoutinesFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    List<String> rutinas;
+    List<String> rutinas = new ArrayList<String>();
     ListView lista_mis_rutinas;
     Intent intent;
     String nombre_rutina;
     MenuItem item;
     ImageView dropdown_routine;
+    ImageView delete_routine;
     ExpandableListAdapter listAdapter;
     ExpandableListView expListView;
-    HashMap<String, List<String>> ejercicios;
+    HashMap<String, List<String>> ejercicios = new HashMap<String, List<String>>();
+    View rootView;
+    List<String> espalda_hombros = new ArrayList<String>();
+    List<String> rutina_martes = new ArrayList<String>();
+    List<String> rutina_miercoles = new ArrayList<String>();
+    List<String> rutina_jueves = new ArrayList<String>();
+    List<String> piernas_gluteos = new ArrayList<String>();
     private static final int MENU_ITEM_ITEM1 = 0;
 
     public MyRoutinesFragment() {
@@ -89,7 +96,7 @@ public class MyRoutinesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_my_routines, container, false);
+        rootView = inflater.inflate(R.layout.fragment_my_routines, container, false);
 
         expListView = (ExpandableListView)rootView.findViewById(R.id.listViewRoutines);
 
@@ -98,6 +105,10 @@ public class MyRoutinesFragment extends Fragment {
         getActivity().setTitle("Mis rutinas");
 
         setHasOptionsMenu(true);
+
+        if(getActivity().getIntent().getIntExtra("señal",0)==1){
+            addExercise("Flexiones de brazo");
+        }
 
         return rootView;
     }
@@ -130,8 +141,6 @@ public class MyRoutinesFragment extends Fragment {
 
     public boolean setListView(ExpandableListView expandablelist){
 
-        rutinas = new ArrayList<String>();
-        ejercicios = new HashMap<String, List<String>>();
 
         rutinas.add("Espalda y hombros");
         rutinas.add("Rutina martes");
@@ -139,22 +148,17 @@ public class MyRoutinesFragment extends Fragment {
         rutinas.add("Rutina jueves");
         rutinas.add("Rutina piernas y glúteos");
 
-        List<String> espalda_hombros = new ArrayList<String>();
         espalda_hombros.add("Pull-ups");
         espalda_hombros.add("Chin-ups");
         espalda_hombros.add("Remo");
-        espalda_hombros.add("Flexiones de brazo");
+        //espalda_hombros.add("Flexiones de brazo");
 
-        List<String> rutina_martes = new ArrayList<String>();
         rutina_martes.add("Remo");
 
-        List<String> rutina_miercoles = new ArrayList<String>();
         rutina_miercoles.add("Pull-ups");
 
-        List<String> rutina_jueves = new ArrayList<String>();
         rutina_jueves.add("Chin-ups");
 
-        List<String> piernas_gluteos = new ArrayList<String>();
         piernas_gluteos.add("Sentadillas");
 
         ejercicios.put(rutinas.get(0),espalda_hombros);
@@ -167,6 +171,24 @@ public class MyRoutinesFragment extends Fragment {
         expandablelist.setAdapter(listAdapter);
 
 
+        return true;
+    }
+
+    public boolean deleteElement(int pos){
+        ejercicios.remove(rutinas.get(pos));
+        rutinas.remove(pos);
+        expListView = (ExpandableListView)rootView.findViewById(R.id.listViewRoutines);
+        listAdapter = new ExpandableListAdapter(getActivity(),rutinas,ejercicios);
+        expListView.setAdapter(listAdapter);
+        return true;
+    }
+
+    public boolean addExercise(String name){
+        espalda_hombros.add(name);
+        ejercicios.put(rutinas.get(0),espalda_hombros);
+        expListView = (ExpandableListView)rootView.findViewById(R.id.listViewRoutines);
+        listAdapter = new ExpandableListAdapter(getActivity(),rutinas,ejercicios);
+        expListView.setAdapter(listAdapter);
         return true;
     }
 
@@ -254,12 +276,38 @@ public class MyRoutinesFragment extends Fragment {
             dropdown_routine.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    switch(groupPosition){
-                        case 0:
+                    //switch(groupPosition){
+                        //case 0:
                             intent = new Intent(getActivity(),EditRoutineActivity.class);
                             intent.putExtra("rutina",headerTitle);
                             startActivity(intent);
-                    }
+                    //}
+                }
+            });
+
+            delete_routine = (ImageView)convertView.findViewById(R.id.deleteRoutine);
+            delete_routine.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    //switch(groupPosition){
+                        //case 1:
+                            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity()).setTitle("Eliminar rutina");
+                            builder.setMessage("¿Estás seguro que deseas eliminar la rutina "+headerTitle+"?");
+                            builder.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deleteElement(groupPosition);
+                                }
+                            });
+                            builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                    //}
                 }
             });
 
