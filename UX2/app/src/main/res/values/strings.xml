@@ -52,4 +52,10 @@
     <string name="cena">Cena</string>
     <string name="otros">Otros</string>
     <string name="finalizar">Finalizar</string>
+    <string name="config">Configuración</string>
+    <string name="salir">Salir</string>
+    <string name="perfil">Perfil</string>
+    <string name="amigos">Amigos</string>
+    <string name="rss">Redes Sociales</string>
+    <string name="inicio">Inicio</string>
 </resources>
