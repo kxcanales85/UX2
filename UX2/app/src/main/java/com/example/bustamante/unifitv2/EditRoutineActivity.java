@@ -47,6 +47,10 @@ public class EditRoutineActivity extends AppCompatActivity {
         setListView();
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        if(getIntent().getIntExtra("señal",0)==1){
+            addElement();
+        }
     }
 
     @Override
@@ -92,7 +96,6 @@ public class EditRoutineActivity extends AppCompatActivity {
         ejercicios.add("Pull-ups");
         ejercicios.add("Chin-ups");
         ejercicios.add("Remo");
-        ejercicios.add("Flexiones de brazo");
         ejercicios.add("Encogimientos");
         ejercicios.add("Pullover");
 
@@ -105,6 +108,14 @@ public class EditRoutineActivity extends AppCompatActivity {
 
     public boolean deleteEelement(int pos){
         ejercicios.remove(pos);
+        lista_ejercicios = (ListView)findViewById(R.id.listViewExercises);
+        adaptador = new MyAdapter(this,R.layout.list_edit_routine,ejercicios);
+        lista_ejercicios.setAdapter(adaptador);
+        return true;
+    }
+
+    public boolean addElement(){
+        ejercicios.add("Flexiones de brazo");
         lista_ejercicios = (ListView)findViewById(R.id.listViewExercises);
         adaptador = new MyAdapter(this,R.layout.list_edit_routine,ejercicios);
         lista_ejercicios.setAdapter(adaptador);

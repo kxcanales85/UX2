@@ -60,6 +60,7 @@ public class MyRoutinesFragment extends Fragment {
     List<String> rutina_jueves = new ArrayList<String>();
     List<String> piernas_gluteos = new ArrayList<String>();
     private static final int MENU_ITEM_ITEM1 = 0;
+    int sig = 0;
 
     public MyRoutinesFragment() {
         // Required empty public constructor
@@ -108,6 +109,7 @@ public class MyRoutinesFragment extends Fragment {
 
         if(getActivity().getIntent().getIntExtra("señal",0)==1){
             addExercise("Flexiones de brazo");
+            sig = 1;
         }
 
         return rootView;
@@ -280,6 +282,7 @@ public class MyRoutinesFragment extends Fragment {
                         //case 0:
                             intent = new Intent(getActivity(),EditRoutineActivity.class);
                             intent.putExtra("rutina",headerTitle);
+                            intent.putExtra("señal",sig);
                             startActivity(intent);
                     //}
                 }
