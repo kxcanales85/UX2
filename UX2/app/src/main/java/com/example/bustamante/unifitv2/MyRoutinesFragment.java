@@ -112,6 +112,10 @@ public class MyRoutinesFragment extends Fragment {
             sig = 1;
         }
 
+        if(getActivity().getIntent().getIntExtra("señal2",0)==1){
+            addRoutine(getActivity().getIntent().getStringExtra("routine"));
+        }
+
         return rootView;
     }
 
@@ -130,10 +134,12 @@ public class MyRoutinesFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case MENU_ITEM_ITEM1:
-                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                /*AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setMessage("Agregar nueva rutina");
                 AlertDialog dialog = builder.create();
-                dialog.show();
+                dialog.show();*/
+                Intent intent = new Intent(getActivity(),AddRoutineActivity.class);
+                startActivity(intent);
                 return true;
 
             default:
@@ -188,6 +194,17 @@ public class MyRoutinesFragment extends Fragment {
     public boolean addExercise(String name){
         espalda_hombros.add(name);
         ejercicios.put(rutinas.get(0),espalda_hombros);
+        expListView = (ExpandableListView)rootView.findViewById(R.id.listViewRoutines);
+        listAdapter = new ExpandableListAdapter(getActivity(),rutinas,ejercicios);
+        expListView.setAdapter(listAdapter);
+        return true;
+    }
+
+    public boolean addRoutine(String name){
+        List<String> aux = new ArrayList<String>();
+        aux.add("");
+        rutinas.add(name);
+        ejercicios.put(name,aux);
         expListView = (ExpandableListView)rootView.findViewById(R.id.listViewRoutines);
         listAdapter = new ExpandableListAdapter(getActivity(),rutinas,ejercicios);
         expListView.setAdapter(listAdapter);

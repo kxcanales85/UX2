@@ -24,7 +24,8 @@
         <activity android:name=".AddExerciseActivity" />
         <activity android:name=".AddAlimentActivity" />
         <activity android:name=".FoodActivity" />
-        <activity android:name=".ListFoodActivity"></activity>
+        <activity android:name=".ListFoodActivity" />
+        <activity android:name=".AddRoutineActivity"></activity>
     </application>
 
 </manifest>
